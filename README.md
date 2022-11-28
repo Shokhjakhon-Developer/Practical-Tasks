@@ -1,1 +1,1 @@
-# Practical Tasks For Course Automated Testing Foundations with .NET 
+# Practical Tasks Of The Course Automated Testing Foundations with .NET 
