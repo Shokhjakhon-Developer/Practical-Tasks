@@ -1,8 +1,11 @@
+using System;
+using System.Collections;
+using System.ComponentModel;
 
 class Program
 {
 
-    static char convert(int num)
+    static char Convert(int num)
     {
         if (num >= 0 && num <= 9)
             return (char)(num + 48);
@@ -11,16 +14,16 @@ class Program
     }
 
    
-    static string converToNewBase(int baseNum, int inputNum)
+    static string ConverToNewBase(int baseNum, int inputNum)
     {
-        string s = "";
+        string tempResult = string.Empty;
 
         while (inputNum > 0)
         {
-            s += convert((inputNum % baseNum));
+            tempResult += Convert((inputNum % baseNum));
             inputNum /= baseNum;
         }
-        char[] result = s.ToCharArray();
+        char[] result = tempResult.ToCharArray();
 
         Array.Reverse(result);
         return new string(result);
@@ -28,9 +31,12 @@ class Program
 
     static void Main()
     {
-        //I had problems on my machine with Read, ReadLine methods so I just wrote a program without having user input feature.
-        int inputNum = 16;
-        int baseNum = 20;
-        Console.WriteLine(inputNum +" in base " + baseNum + " is " + converToNewBase(baseNum, inputNum));
+        Int32Converter converter = new Int32Converter();
+        Console.WriteLine("Enter your number: ");
+        var inputNum = converter.ConvertFromString(Console.ReadLine());
+        Console.WriteLine("Enter your new base: ");
+        var baseNum = converter.ConvertFromString(Console.ReadLine());
+        
+        Console.WriteLine(inputNum +" in base " + baseNum + " is " + ConverToNewBase((int)baseNum, (int)inputNum)  + ".");
     }
 }
